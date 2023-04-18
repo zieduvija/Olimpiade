@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Progress : MonoBehaviour
 {
@@ -12,13 +13,14 @@ public class Progress : MonoBehaviour
 
     private float merkaProgress = 0;
     public float atrums = 0.5f;
+    public TextMeshProUGUI sliderText;
     private void Awake() {
         slider = gameObject.GetComponent<Slider>();
         dalinas = GameObject.Find("Progress dalinas").GetComponent<ParticleSystem>();
     }
     void Start()
     {
-        palielinatProgresu(0.75f);
+
     }
 
     // Update is called once per frame
@@ -40,5 +42,6 @@ public class Progress : MonoBehaviour
     public void palielinatProgresu(float jaunsProgress)
     {
        merkaProgress = slider.value + jaunsProgress;
+       sliderText.text = merkaProgress.ToString("0")+"/"+slider.maxValue.ToString();
     }
 }

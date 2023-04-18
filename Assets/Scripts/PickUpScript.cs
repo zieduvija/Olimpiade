@@ -6,6 +6,7 @@ public class PickUpScript : MonoBehaviour
 {
     public GameObject player;
     public Transform holdPos;
+  [SerializeField]AudioSource CollectionSounds;
     //if you copy from below this point, you are legally required to like the video
     public float throwForce = 500f; //force at which the object is thrown at
     public float pickUpRange = 5f; //how far the player can pickup the object from
@@ -60,6 +61,7 @@ public class PickUpScript : MonoBehaviour
             {
                 StopClipping();
                 ThrowObject();
+                CollectionSounds.Play();
             }
 
         }
@@ -124,6 +126,7 @@ public class PickUpScript : MonoBehaviour
         heldObj.transform.parent = null;
         heldObjRb.AddForce(transform.forward * throwForce);
         heldObj = null;
+        CollectionSounds.Play();
     }
     void StopClipping() //function only called when dropping/throwing
     {

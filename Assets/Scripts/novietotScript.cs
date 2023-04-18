@@ -7,6 +7,9 @@ public class novietotScript : MonoBehaviour
     // Start is called before the first frame update
 
 
+    public Progress progress;
+    [SerializeField]AudioSource CollectionSounds;
+
     int score = 0;
 
 
@@ -27,10 +30,11 @@ public class novietotScript : MonoBehaviour
     {
         if (other.transform.gameObject.tag == "Atkritums")
         {
-           Destroy(other.transform.gameObject);
             score++;
             Debug.Log(score.ToString());
-            
+            progress.palielinatProgresu(1f);
+            CollectionSounds.Play();
+            Destroy(other.transform.gameObject);
 
         }
     }
