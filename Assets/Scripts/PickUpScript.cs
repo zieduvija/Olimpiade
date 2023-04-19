@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PickUpScript : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PickUpScript : MonoBehaviour
     private Rigidbody heldObjRb; //rigidbody of object we pick up
     private bool canDrop = true; //this is needed so we don't throw/drop object when rotating the object
     private int LayerNumber; //layer index
+    public bool pacelts = false;
 
     //Reference to script which includes mouse movement of player (looking around)
     //we want to disable the player looking around when rotating the object
@@ -36,6 +38,7 @@ public class PickUpScript : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
                 {
+
                     //make sure pickup tag is attached
                     if (hit.transform.gameObject.tag == "Atkritums")
                     {
@@ -70,6 +73,7 @@ public class PickUpScript : MonoBehaviour
     {
         if (pickUpObj.GetComponent<Rigidbody>()) //make sure the object has a RigidBody
         {
+            pacelts = true;
             heldObj = pickUpObj; //assign heldObj to the object that was hit by the raycast (no longer == null)
             heldObjRb = pickUpObj.GetComponent<Rigidbody>(); //assign Rigidbody
             heldObjRb.isKinematic = true;

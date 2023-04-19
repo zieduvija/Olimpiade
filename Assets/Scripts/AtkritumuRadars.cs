@@ -12,14 +12,19 @@ public class AtkritumuRadars : MonoBehaviour
 
       public GameObject atkritums;
       public GameObject speletajs;
+    public GameObject paligs;
+      public PickUpScript pacelsana;
 
-      float dist;
+      
+
+      float dist = 0.09f;
     void Start()
     {
          StartCoroutine("DoCheck");
          atkritums = gameObject;
          dist = Vector3.Distance(atkritums.transform.position, speletajs.transform.position);
-        
+         paligs.SetActive(false);
+
     }
      IEnumerator DoCheck() {
      for(;;) {
@@ -37,15 +42,23 @@ public class AtkritumuRadars : MonoBehaviour
 
 
     // Update is called once per frame
-void Update()
-{
-    if (ieksa && atkritums.GetComponent<Rigidbody>().isKinematic) 
+    void Update()
     {
-        atskanojas = false;
-        atkritums.GetComponent<SphereCollider>().enabled = false;
-        CollectionSound.Stop();
+        if (ieksa && atkritums.GetComponent<Rigidbody>().isKinematic)
+        {
+            atskanojas = false;
+            atkritums.GetComponent<SphereCollider>().enabled = false;
+            CollectionSound.Stop();
+        }
+
+
+        if (!pacelsana.pacelts && dist < 2.5)
+        {
+            paligs.SetActive(true);
+
+        } else paligs.SetActive(false);
+
     }
-}
 
 
   
