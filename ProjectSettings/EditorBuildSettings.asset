@@ -6,9 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/PavloUI/Start_scene.unity
+    path: Assets/Scenes/PavloUI/Start_scene.unity
     guid: 98cc2e0e00c8c5649a4cd152cabf6e48
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/PavloUI/Limenu izvele.unity
+    guid: 15c45f3e4cd676440b9e94fcf7af9e33
+  - enabled: 1
+    path: Assets/Scenes/Pludmale.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Nodosana.unity
+    guid: 5bc6defabd0d3f44898c0e1b40186397
+  - enabled: 1
+    path: Assets/Scenes/PavloUI/Rezultats.unity
+    guid: 6a02ba1c22b49e74897df0943247dbee
+  - enabled: 1
+    path: Assets/Scenes/PavloUI/Beigas.unity
+    guid: d51408bf9ef57b644983de9523f51014
+  - enabled: 1
+    path: Assets/Scenes/PavloUI/Noteikumi.unity
+    guid: f4d3eb805e310a84cab7a4b23017e6b6
   m_configObjects: {}

@@ -25,6 +25,7 @@ TagManager:
   - 
   - 
   - 
+  - holdLayer
   - 
   - 
   - 
@@ -38,8 +39,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - post
   m_SortingLayers:
   - name: Default
     uniqueID: 0

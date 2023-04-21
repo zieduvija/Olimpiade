@@ -5,7 +5,12 @@ using UnityEngine.SceneManagement;
 public class StartMenu : MonoBehaviour
 {
     
+    public LimenuIzvele izvele;
     public void StartGame(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
+    public void Play(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+izvele.level);
+    }
 }
+

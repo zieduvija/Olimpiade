@@ -12,7 +12,7 @@ public class Progress : MonoBehaviour
 
 
     private float merkaProgress = 0;
-    public float atrums = 0.5f;
+    public float atrums = 1.5f;
     public TextMeshProUGUI sliderText;
     private void Awake() {
         slider = gameObject.GetComponent<Slider>();

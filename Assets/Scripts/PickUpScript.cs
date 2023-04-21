@@ -85,6 +85,7 @@ public class PickUpScript : MonoBehaviour
     }
     void DropObject()
     {
+        pacelts = false;
         //re-enable collision with player
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
         heldObj.layer = 0; //object assigned back to default layer
@@ -123,6 +124,7 @@ public class PickUpScript : MonoBehaviour
     }
     void ThrowObject()
     {
+        pacelts = false;
         //same as drop function, but add force to object before undefining it
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
         heldObj.layer = 0;

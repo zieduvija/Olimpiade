@@ -12,7 +12,7 @@ public class AtkritumuRadars : MonoBehaviour
 
       public GameObject atkritums;
       public GameObject speletajs;
-    public GameObject paligs;
+      private GameObject paligs;
       public PickUpScript pacelsana;
 
       
@@ -22,7 +22,9 @@ public class AtkritumuRadars : MonoBehaviour
     {
          StartCoroutine("DoCheck");
          atkritums = gameObject;
+         paligs = GameObject.Find("Paligs");
          dist = Vector3.Distance(atkritums.transform.position, speletajs.transform.position);
+         if(paligs != null)
          paligs.SetActive(false);
 
     }
@@ -32,11 +34,11 @@ public class AtkritumuRadars : MonoBehaviour
         if (ieksa && atskanojas)
         {
             dist = Vector3.Distance(atkritums.transform.position, speletajs.transform.position);
-            Debug.Log(dist);
+            //Debug.Log(dist);
             CollectionSound.Play();
         }
              
-         yield return new WaitForSeconds(dist/10);
+         yield return new WaitForSeconds(dist/8);
      }
  }
 
@@ -52,11 +54,16 @@ public class AtkritumuRadars : MonoBehaviour
         }
 
 
-        if (!pacelsana.pacelts && dist < 2.5)
+        if (!pacelsana.pacelts && dist < 2.5f && paligs != null)
         {
             paligs.SetActive(true);
 
-        } else paligs.SetActive(false);
+        } else if(paligs != null)
+           
+
+        if(!ieksa && paligs != null)
+            paligs.SetActive(false);
+        
 
     }
 
@@ -68,7 +75,7 @@ public class AtkritumuRadars : MonoBehaviour
         {
            ieksa = true;
            atskanojas = true;
-           Debug.Log("ieksa");
+           //Debug.Log("ieksa");
 
         }
     }
