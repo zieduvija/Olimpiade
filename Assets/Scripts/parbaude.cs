@@ -14,6 +14,11 @@ namespace parbaude
         public TextMeshProUGUI timerText;
         private float secondsCount;
         private int minuteCount;
+        
+        void Start()
+        {
+            secondsCount = 0;
+        }
         void Update(){
             UpdateTimerUI();
             if(progress.value >= 10)

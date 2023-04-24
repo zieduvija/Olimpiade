@@ -16,7 +16,7 @@ public class beigas : MonoBehaviour
 
     private void Start()
     {
-        timeSpent = timer.GetTimeElapsed();
+        timeSpent = GameObject.FindObjectOfType<Laiks>().GetElapsedTime();
         if(timeSpent >= 60)
         {
             int minutes = (int)timeSpent / 60;

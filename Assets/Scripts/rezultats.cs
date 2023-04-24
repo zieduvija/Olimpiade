@@ -18,6 +18,7 @@ public class rezultats : MonoBehaviour
     void Start()
     {
          seconds = (int)timer.GetTimeElapsed();
+         Debug.Log(seconds);
         if(seconds >= 60)
         {
             int minutes = seconds / 60;

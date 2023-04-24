@@ -11,6 +11,7 @@ public class Progress : MonoBehaviour
     private ParticleSystem dalinas;
 
 
+
     private float merkaProgress = 0;
     public float atrums = 1.5f;
     public TextMeshProUGUI sliderText;
