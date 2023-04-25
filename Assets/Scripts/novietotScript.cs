@@ -19,6 +19,9 @@ public class novietotScript : MonoBehaviour
             score++;
             progress.palielinatProgresu(1f);
             CollectionSounds.Play();
+            other.gameObject.tag = "Savakts";
+
+            
             //Destroy(other.transform.parent.gameObject);
               //other.transform.parent = null;
 

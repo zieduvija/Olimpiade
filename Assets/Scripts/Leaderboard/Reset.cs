@@ -6,5 +6,6 @@ public class Reset : MonoBehaviour
 {
     public void TurpinatSpeli(){
         SceneManager.LoadScene(0);
+        
     }
 }

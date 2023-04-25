@@ -7,6 +7,7 @@ TagManager:
   - Atkritums
   - Speletajs
   - Limenis
+  - Savakts
   layers:
   - Default
   - TransparentFX
