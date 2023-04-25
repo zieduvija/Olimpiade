@@ -4,91 +4,77 @@ using UnityEngine;
 
 public class AtkritumuRadars : MonoBehaviour
 {
-    // Start is called before the first frame update
-      [SerializeField]AudioSource CollectionSound;
-      bool ieksa = false;
-      bool atskanojas = false;
-      //float distance = 0.09f;
+    [SerializeField] AudioSource CollectionSound;
+    [SerializeField] float checkInterval = 0.09f;
+    [SerializeField] float maxDistance = 2.5f;
 
-      public GameObject atkritums;
-      public GameObject speletajs;
-      private GameObject paligs;
-      public PickUpScript pacelsana;
+    private bool ieksa = false;
+    private bool atskanojas = false;
+    private GameObject speletajs;
+    private GameObject paligs;
+    private PickUpScript pacelsana;
 
-      
-
-      float dist = 0.09f;
-    void Start()
+    private void Start()
     {
-         StartCoroutine("DoCheck");
-         atkritums = gameObject;
-         paligs = GameObject.Find("Paligs");
-         dist = Vector3.Distance(atkritums.transform.position, speletajs.transform.position);
-         if(paligs != null)
-         paligs.SetActive(false);
-
+        StartCoroutine(DoCheck());
+        speletajs = GameObject.FindGameObjectWithTag("Speletajs");
+        pacelsana = speletajs.GetComponent<PickUpScript>();
+        paligs = GameObject.Find("Paligs");
+        if (paligs != null)
+            paligs.SetActive(false);
     }
-     IEnumerator DoCheck() {
-     for(;;) {
-         // execute block of code here
-        if (ieksa && atskanojas)
-        {
-            dist = Vector3.Distance(atkritums.transform.position, speletajs.transform.position);
-            //Debug.Log(dist);
-            CollectionSound.Play();
-        }
-             
-         yield return new WaitForSeconds(dist/8);
-     }
- }
 
-
-    // Update is called once per frame
-    void Update()
+    private IEnumerator DoCheck()
     {
-        if (ieksa && atkritums.GetComponent<Rigidbody>().isKinematic)
+        while (true)
+        {
+            if (ieksa && atskanojas)
+            {
+                float dist = Vector3.Distance(gameObject.transform.position, speletajs.transform.position);
+                if (dist < maxDistance)
+                {
+                    CollectionSound.Play();
+                    yield return new WaitForSeconds(dist / 8);
+                }
+            }
+            yield return new WaitForSeconds(checkInterval);
+        }
+    }
+
+    private void Update()
+    {
+        if (ieksa && gameObject.GetComponent<Rigidbody>().isKinematic)
         {
             atskanojas = false;
-            atkritums.GetComponent<SphereCollider>().enabled = false;
+            Destroy(gameObject.GetComponent<SphereCollider>());
             CollectionSound.Stop();
         }
 
-
-        if (!pacelsana.pacelts && dist < 2.5f && paligs != null)
-        {
-            paligs.SetActive(true);
-
-        } else if(paligs != null)
-           
-
-        if(!ieksa && paligs != null)
-            paligs.SetActive(false);
-        
-
+        // if (!pacelsana.pacelts && Vector3.Distance(gameObject.transform.position, speletajs.transform.position) < maxDistance && paligs != null)
+        // {
+        //     paligs.SetActive(true);
+        // }
+        // else if (paligs != null && !ieksa)
+        // {
+        //     paligs.SetActive(false);
+        // }
     }
 
-
-  
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.gameObject.tag == "Speletajs")
+        if (other.gameObject.CompareTag("Speletajs"))
         {
-           ieksa = true;
-           atskanojas = true;
-           //Debug.Log("ieksa");
-
+            ieksa = true;
+            atskanojas = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.transform.gameObject.tag == "Speletajs")
+        if (other.gameObject.CompareTag("Speletajs"))
         {
-           ieksa = false;
-           atskanojas = false;
-
+            ieksa = false;
+            atskanojas = false;
         }
     }
-
-
 }

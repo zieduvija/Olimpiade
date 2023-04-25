@@ -5,7 +5,6 @@ public class ExitLevel : MonoBehaviour
     public float interactDistance = 5f;
     public KeyCode interactKey = KeyCode.E; 
     public GameObject exitObject; 
-
     public novietotScript script;
 
     private void Update()
@@ -31,7 +30,7 @@ public class ExitLevel : MonoBehaviour
 
     private void pamest()
     {
-
+        
         SceneManager.LoadScene(1);
         
     }

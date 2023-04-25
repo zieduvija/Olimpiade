@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
+using TMPro;
 
 public class LimenuIzvele : MonoBehaviour
 {
@@ -12,9 +12,16 @@ public class LimenuIzvele : MonoBehaviour
     public TextMeshProUGUI vietasApraksts;
     public GameObject bildesPanelis;
     public Sprite pirmais,otrais;
-    public int level = 1;
+    public int level = 0;
+
+    public Button viens;
+    public Button divi;
+    public Button tris;
 
 
+    public void Start(){
+;
+    }
     public void pirmaisLimenis() {
         vietasNosaukums.SetText("Liepājas pludmale");
         vietasApraksts.SetText("Pludmale Liepājas krastā.\nUzdevums: Attīrīt no atkritumiem!"); 
@@ -29,5 +36,16 @@ public class LimenuIzvele : MonoBehaviour
         bildesPanelis.gameObject.GetComponent<Image>().sprite = otrais;
         level = 2;
     }
+
+    
+    public void Update(){
+
+    }
+
+    public void resetlevel(){
+        level = 1;
+    }
+
+
 
 }

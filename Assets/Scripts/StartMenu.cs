@@ -13,6 +13,7 @@ public class StartMenu : MonoBehaviour
     public void Play(){
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+izvele.level);
+        Debug.Log(izvele.level);
     }
 }
 

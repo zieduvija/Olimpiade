@@ -13,7 +13,8 @@ public class novietotScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.gameObject.tag == "Atkritums")
+        //if atkritums and not kinetic
+        if (other.transform.gameObject.tag == "Atkritums" &&  other.transform.gameObject.GetComponent<Rigidbody>().isKinematic == false)
         {
             score++;
             progress.palielinatProgresu(1f);
